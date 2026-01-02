@@ -1,7 +1,7 @@
 name: 3_basic_values
 on: [push]
 jobs:
-  3_basic_values:
+  values:
     runs-on: ubuntu-latest
     env:
       ENV_NAME: example_value

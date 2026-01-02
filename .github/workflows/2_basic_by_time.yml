@@ -3,7 +3,7 @@ on:
   schedule:
     - cron: '0 * * * *'
 jobs:
-  2_basic_by_time:
+  time:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
