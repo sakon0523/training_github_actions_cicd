@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ENV_NAME: example_value
-      REPO_NAME: ${github.repository}
+      REPO_NAME: ${{github.repository}}
       REPO_VAL_QWERT: ${{vars.VAL_QWERT_12345}}
 
     steps:
@@ -29,11 +29,11 @@ jobs:
           echo "${{ runner.tool_cache }}"
           echo "${{ runner.debug }}"
 
-      - name: show env env value
+      - name: show env value
         run: |
           echo "The value of ENV_NAME is $ENV_NAME"
-          echo "${REPO_NAME}"
-          echo "${REPO_VAL_QWERT}"
+          echo "${{env.REPO_NAME}}"
+          echo "${{env.REPO_VAL_QWERT}}"
 
       - name: default github value
         run: |
