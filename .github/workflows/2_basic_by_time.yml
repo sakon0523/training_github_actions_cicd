@@ -1,0 +1,21 @@
+name: Hello
+on:
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Say Hello
+        run: |
+          echo "Hello, World!"
+          echo "{{ github.run_id }}"
+          echo "{{ github.head_ref }}"
+          echo "{{ github.workspace }}"
+          echo "{{ github.repository }}"
+          echo "{{ github.repository_owner }}"
+          echo "{{ github.event }}"
+          git log -1

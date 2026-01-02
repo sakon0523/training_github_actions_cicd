@@ -1,0 +1,17 @@
+name: Hello
+on:
+  workflow_dispatch:
+    inputs:
+      example_input:
+        description: 'An example input'
+        required: true
+        default: 'goodbye'
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Say Hello
+        run: |
+          echo "Hello, World!"
+          echo "{{ inputs.example_input }}"
