@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ENV_NAME: example_value
-      REPO_NAME: ${GITHUB_REPOSITORY}
+      REPO_NAME: ${github.repository}
       REPO_VAL_QWERT: ${{vars.VAL_QWERT_12345}}
 
     steps:
@@ -42,11 +42,11 @@ jobs:
 
       - name: compare
         run: |
-          echo "${{ contains(github.repository, env.REPO_NAME) }}"
-          echo "${{ startsWith(github.repository, 'train') }}"
-          echo "${{ endsWith(github.repository, 'cicd') }}"
+          echo "${{ contains(${REPO_NAME}, env.REPO_NAME) }}"
+          echo "${{ startsWith(${REPO_NAME}, 'train') }}"
+          echo "${{ endsWith(${REPO_NAME}, 'cicd') }}"
 
       - name: if_check
-        if: ${{ contains(github.repository, env.REPO_NAME) && success() }}
+        if: ${{ contains(${REPO_NAME}, env.REPO_NAME) && success() }}
         run: |
           echo "if checks done"
