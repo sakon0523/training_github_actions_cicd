@@ -1,7 +1,7 @@
-name: 3_basic_1
+name: 3_basic_values
 on: [push]
 jobs:
-  hello:
+  3_basic_values:
     runs-on: ubuntu-latest
     env:
       ENV_NAME: example_value

@@ -7,7 +7,7 @@ on:
         required: true
         default: 'goodbye'
 jobs:
-  hello:
+  2_basic_by_hand:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
