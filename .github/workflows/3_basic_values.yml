@@ -42,11 +42,11 @@ jobs:
 
       - name: compare
         run: |
-          echo "${{ contains(${REPO_NAME}, env.REPO_NAME) }}"
-          echo "${{ startsWith(${REPO_NAME}, 'train') }}"
-          echo "${{ endsWith(${REPO_NAME}, 'cicd') }}"
+          echo "${{ contains(github.repository, env.REPO_NAME) }}"
+          echo "${{ startsWith(github.repository, 'train') }}"
+          echo "${{ endsWith(github.repository, 'cicd') }}"
 
       - name: if_check
-        if: ${{ contains(${REPO_NAME}, env.REPO_NAME) && success() }}
+        if: ${{ contains(github.repository, env.REPO_NAME) && success() }}
         run: |
           echo "if checks done"
