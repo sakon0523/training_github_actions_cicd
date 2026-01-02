@@ -54,7 +54,7 @@ jobs:
       - name: export values
         id: source
         run: |
-          echo: "result=success" >> $GITHUB_OUTPUT
+          echo "result=success" >> $GITHUB_OUTPUT
       - name: use exported values
         env:
           RESULT_VAL: ${{ steps.source.outputs.result }}
