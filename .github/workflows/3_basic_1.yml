@@ -1,0 +1,36 @@
+name: 3_basic_1
+on: [push]
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    env:
+      ENV_NAME: example_value
+      
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Say github and runner info
+        run: |
+          echo "Hello, World!"
+          echo "${{ github.run_id }}"
+          echo "${{ github.head_ref }}"
+          echo "${{ github.workspace }}"
+          echo "${{ github.repository }}"
+          echo "${{ github.repository_owner }}"
+          echo "${{ github.event }}"
+          echo "${{ runner.name }}"
+          echo "${{ runner.os }}"
+          echo "${{ runner.arch }}"
+          echo "${{ runner.temp }}"
+          echo "${{ runner.tool_cache }}"
+          echo "${{ runner.debug }}"
+      
+      - name: show env env value
+        run: |
+          echo "The value of ENV_NAME is $ENV_NAME"
+      
+      - name: default github value
+        run: |
+          echo "${GITHUB_ACTION}"
+          echo "${GITHUB_REPOSITORY}"
