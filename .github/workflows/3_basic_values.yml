@@ -2,10 +2,13 @@ name: 3_basic_values
 on: [push]
 jobs:
   values:
+    name: printing values
     runs-on: ubuntu-latest
     env:
       ENV_NAME: example_value
-      
+      REPO_NAME: ${GITHUB_REPOSITORY}
+      REPO_VAL_QWERT: ${{vars.VAL_QWERT_12345}}
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,12 +28,26 @@ jobs:
           echo "${{ runner.temp }}"
           echo "${{ runner.tool_cache }}"
           echo "${{ runner.debug }}"
-      
+
       - name: show env env value
         run: |
           echo "The value of ENV_NAME is $ENV_NAME"
-      
+          echo "${REPO_NAME}"
+          echo "${REPO_VAL_QWERT}"
+
       - name: default github value
         run: |
           echo "${GITHUB_ACTION}"
           echo "${GITHUB_REPOSITORY}"
+
+      - name: compare
+        run: |
+          echo "${{ contains(${GITHUB_REPOSITORY}, ${REPO_NAME})}}"
+          echo "${{ startsWith(${GITHUB_REPOSITORY}, 'train')}}"
+          echo "${{ endsWith(${GITHUB_REPOSITORY}, 'cicd')}}"
+
+      - name: if_check
+        run: |
+          if: ${{ contains(${GITHUB_REPOSITORY}, ${REPO_NAME})}}
+          if: ${{ success() }}
+          echo "if checks done"
