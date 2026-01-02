@@ -1,7 +1,7 @@
 name: 2_basic_by_time
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 * * * *'
 jobs:
   hello:
     runs-on: ubuntu-latest
