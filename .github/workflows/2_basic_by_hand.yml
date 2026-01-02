@@ -1,4 +1,4 @@
-name: Hello
+name: 2_basic_by_hand
 on:
   workflow_dispatch:
     inputs:
