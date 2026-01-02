@@ -14,4 +14,4 @@ jobs:
       - name: Say Hello
         run: |
           echo "Hello, World!"
-          echo "{{ inputs.example_input }}"
+          echo "${{ inputs.example_input }}"
