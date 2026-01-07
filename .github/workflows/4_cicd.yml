@@ -5,9 +5,8 @@ on:
       - './scripts/*.py'
       - '.github/workflows/4_cicd.yml'
   pull_request:
-    paths:
-      - './scripts/*.py'
-      - '.github/workflows/4_cicd.yml'
+    # paths:
+    #   - './scripts/*.py'
     # paths-ignore:
     #   - 'README.md'
     # branches:

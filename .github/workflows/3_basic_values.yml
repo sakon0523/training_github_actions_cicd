@@ -4,8 +4,6 @@ on:
     paths:
       - '.github/workflows/3_basic_values.yml'
   pull_request:
-    paths:
-      - '.github/workflows/3_basic_values.yml'
 jobs:
   values:
     name: printing values
