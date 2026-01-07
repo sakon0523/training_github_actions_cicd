@@ -19,7 +19,7 @@ on:
     #   - 'v*.*.*'
 concurrency: ${{ github.workflow }}
 jobs:
-  test:
+  test1:
     name: execute test scripts
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -50,3 +50,48 @@ jobs:
         run: |
           pip install flake8
           flake8 ./scripts/ --max-line-length=100
+
+      - name: Debug log
+        run: |
+          echo "::debug::This is a debug message"
+          echo "::group::Grouped Logs"
+          echo "This is inside a log group"
+          echo "::endgroup::"
+          echo "::error::This is an error message"
+          echo "::warning::This is a warning message"
+          echo "::notice::This is a notice message"
+
+      - name: Upload test summary
+        runs: |
+          echo "# Test Summary" >> "${GITHUB_STEP_SUMMARY}"
+          echo "- first line" >> "${GITHUB_STEP_SUMMARY}"
+          echo "- second line" >> "${GITHUB_STEP_SUMMARY}"
+
+      - id: generate_output
+        name: Generate output
+        run: |
+          echo "output_value=42" >> "$GITHUB_OUTPUT"
+
+    outputs:
+      my_output: ${{ steps.generate_output.outputs.output_value }}
+
+  test2:
+    name: execute second job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo message
+        run: echo "This is second job."
+
+  test3:
+    name: execute third job
+    runs-on: ubuntu-latest
+    needs: test1
+    steps:
+      - name: Echo message
+        run: echo "This is third job that runs after the first job."
+
+      - env:
+          FIRST_JOB_OUTPUT: ${{ needs.test1.outputs.my_output }}
+        name: Use output from first job
+        run: |
+          echo "Output from first job: $FIRST_JOB_OUTPUT"
