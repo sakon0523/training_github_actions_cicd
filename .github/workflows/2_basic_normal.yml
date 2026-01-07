@@ -4,8 +4,6 @@ on:
     paths:
       - '.github/workflows/2_basic_normal.yml'
   pull_request:
-    paths:
-      - '.github/workflows/2_basic_normal.yml'
 jobs:
   print:
     runs-on: ubuntu-latest
