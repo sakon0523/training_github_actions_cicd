@@ -1,8 +1,9 @@
-name: Dump
+name: test_6_module_usage
 on:
   push:
     paths:
-      - '.github/actions/6_module.yml'
+      - './.github/actions/6_module.yml'
+      - '.github/workflows/6_useactions.yml'
   pull_request:
 jobs:
   debug:
