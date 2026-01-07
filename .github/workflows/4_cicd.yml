@@ -1,5 +1,9 @@
 name: test_4_cicd
-on: 
+on:
+  push:
+    paths:
+      - './scripts/*.py'
+      - '.github/workflows/4_cicd.yml'
   pull_request:
     paths:
       - './scripts/*.py'
