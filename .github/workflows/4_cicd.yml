@@ -62,7 +62,7 @@ jobs:
           echo "::notice::This is a notice message"
 
       - name: Upload test summary
-        runs: |
+        run: |
           echo "# Test Summary" >> "${GITHUB_STEP_SUMMARY}"
           echo "- first line" >> "${GITHUB_STEP_SUMMARY}"
           echo "- second line" >> "${GITHUB_STEP_SUMMARY}"
