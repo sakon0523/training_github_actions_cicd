@@ -17,7 +17,7 @@ jobs:
       REPO_VAL_QWERT: ${{vars.VAL_QWERT_12345}}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Say github and runner info
         run: |
           echo "Hello, World!"
