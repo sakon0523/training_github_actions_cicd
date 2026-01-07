@@ -14,7 +14,7 @@ runs:
   steps:
     - run: printenv | sort
       shell: bash  # shellキーが必要
-    - run: echo "${ CONTEXT }}"
+    - run: echo "${CONTEXT}}"
       if: ${{ inputs.enable-context == 'true' }}
       env:
         CONTEXT: ${{ toJson(github) }}
