@@ -1,0 +1,13 @@
+name: test_2_basic_by_time
+on:
+  schedule:
+    - cron: '0 * * * *'
+jobs:
+  time:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Say Hello
+        run: |
+          echo "Hello, World!"
+          date
