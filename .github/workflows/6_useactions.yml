@@ -2,7 +2,7 @@ name: Dump
 on:
   push:
     paths:
-      - '.github/workflows/6_useactions.yml'
+      - '.github/actions/6_module.yml'
   pull_request:
 jobs:
   debug:
