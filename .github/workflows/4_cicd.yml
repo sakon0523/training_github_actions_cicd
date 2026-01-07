@@ -1,5 +1,19 @@
 name: test_4_cicd
-on: [push]
+on: 
+  pull_request:
+    paths:
+      - './scripts/*.py'
+      - '.github/workflows/4_cicd.yml'
+    # paths-ignore:
+    #   - 'README.md'
+    # branches:
+    #   - main
+    # branches-ignore:
+    #   - develop
+    # tags:
+    #   - '*'
+    # tags-ignore:
+    #   - 'v*.*.*'
 jobs:
   values:
     name: execute test scripts
