@@ -103,13 +103,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - env:
-          FIRST_JOB_OUTPUT: ${{ needs.test1.outputs.my_output }}
-        name: Use output from first job
-        run: |
-          echo "Output from first job: $FIRST_JOB_OUTPUT"
-
       - name: Create a file to upload
+        env:
+          FIRST_JOB_OUTPUT: ${{ needs.test1.outputs.my_output }}
         run: |
           echo "This is a sample artifact file." >> artifact.txt
           echo "Output from first job: $FIRST_JOB_OUTPUT" >> artifact.txt
