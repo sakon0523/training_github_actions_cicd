@@ -12,4 +12,6 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
-      - run: gh pr merge "${GITHUB_HEAD_REF}" --merge
+      - run: |
+          gh pr review "${{ github.head_ref }}" --approve
+          gh pr merge "${{ github.head_ref }}" --merge --auto
