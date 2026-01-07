@@ -1,4 +1,4 @@
-name: 2_basic_by_time
+name: test_2_basic_by_time
 on:
   schedule:
     - cron: '0 * * * *'

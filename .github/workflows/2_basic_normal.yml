@@ -1,4 +1,4 @@
-name: 2_basic_normal
+name: test_2_basic_normal
 on: [push]
 jobs:
   print:
