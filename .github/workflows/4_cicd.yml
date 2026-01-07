@@ -1,0 +1,28 @@
+name: test_4_cicd
+on: [push]
+jobs:
+  values:
+    name: execute test scripts
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+    env:
+      ENV_NAME: example_value
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+
+      - name: Run tests
+        run: |
+          pytest ./test/test_even_or_odd.py
