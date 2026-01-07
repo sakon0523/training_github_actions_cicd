@@ -19,6 +19,6 @@ jobs:
           enable-context: 'true'
 
       - name: Show Dumped Date
-        run: echo "Dumped Date "${DATE}"
+        run: echo "Dumped Date ${DATE}"
         env:
           DATE: ${{ steps.dump_module.outputs.dumped-date }}"
