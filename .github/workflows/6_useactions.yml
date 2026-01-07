@@ -2,8 +2,8 @@ name: test_6_module_usage
 on:
   push:
     paths:
-      - './.github/actions/6_module.yml'
       - '.github/workflows/6_useactions.yml'
+      - '.github/actions/6_module/*'
   pull_request:
 jobs:
   debug:
@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Use Dump Module
-        uses: ./.github/actions/6_module.yml
+        uses: .github/actions/6_module
         id: dump_module
         with:
           enable-context: 'true'
