@@ -4,6 +4,9 @@ jobs:
   values:
     name: printing values
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
     env:
       ENV_NAME: example_value
       REPO_NAME: ${{github.repository}}
