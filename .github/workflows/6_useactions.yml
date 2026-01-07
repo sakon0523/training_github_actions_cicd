@@ -1,5 +1,9 @@
 name: Dump
-on: push
+on:
+  push:
+    paths:
+      - '.github/workflows/6_useactions.yml'
+  pull_request:
 jobs:
   debug:
     runs-on: ubuntu-latest
