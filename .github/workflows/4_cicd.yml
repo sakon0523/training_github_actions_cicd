@@ -95,3 +95,41 @@ jobs:
         name: Use output from first job
         run: |
           echo "Output from first job: $FIRST_JOB_OUTPUT"
+
+  upload:
+    name: Upload artifact
+    runs-on: ubuntu-latest
+    needs: [test1, test2, test3]
+    steps:
+      - uses: actions/checkout@v4
+
+      - env:
+          FIRST_JOB_OUTPUT: ${{ needs.test1.outputs.my_output }}
+        name: Use output from first job
+        run: |
+          echo "Output from first job: $FIRST_JOB_OUTPUT"
+
+      - name: Create a file to upload
+        run: |
+          echo "This is a sample artifact file." >> artifact.txt
+          echo "Output from first job: $FIRST_JOB_OUTPUT" >> artifact.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sample-artifact
+          path: artifact.txt
+          retention-days: 5
+
+  download:
+    name: Download artifact
+    runs-on: ubuntu-latest
+    needs: upload
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: sample-artifact
+          path: ./downloaded-artifact
+      - run: |
+          cat ./downloaded-artifact/artifact.txt
